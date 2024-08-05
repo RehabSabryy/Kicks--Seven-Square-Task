@@ -1,10 +1,16 @@
 import React from 'react'
-import Loading from 'react-loading';
-export default function Button({btn}) {
+export default function Button({btn,loading}) {
   return (
     <>
         <button className='btn py-2 px-3 w-100'>
-           {btn} 
+          {loading ? (
+                  <span className="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+          ): (
+            <>
+            {btn}
+            </> 
+          )      
+          }
         </button>
     </>
   )

@@ -4,7 +4,8 @@ import AuthButton from '../AuthButton';
 import Joi from 'joi';
 import axios from 'axios';
 import { useNavigate } from 'react-router';
-import Loading from 'react-loading';
+import KeepMeLogged from '../KeepMeLogged';
+import { Link } from 'react-router-dom';
 
 export default function Register() {
   const [form, setForm] = useState({
@@ -66,16 +67,16 @@ export default function Register() {
       setError({});
     }
 
+    // concat first + last name as name for backend API
     const { firstName, lastName, email, password } = form;
     const name= `${firstName} ${lastName}`;
     try {
       setLoading(true);
       const { data } = await axios.post('https://www.sevensquare.net/api/user/register', { name, email, password });
-      console.log(data);
       setLoading(false);
       navigate('/')
     }
-     catch (error) {
+    catch (error) {
       console.error(error);
       if (error.response && error.response.data && error.response.data.errors) {
         setError(error.response.data.errors);
@@ -94,7 +95,7 @@ export default function Register() {
         </div>
         <div className="col-md-7 d-flex flex-column justify-content-center">
           <div className="container px-5 w-75 m-auto auth-container">
-            <h1>Register</h1>
+            <h1 className="fw-bold">Register</h1>
             <h5 className='fw-bold pt-3'>Your Name</h5>
             <form id="registerForm" onSubmit={handleSubmit}>
               <div className="form-group my-4">
@@ -108,15 +109,14 @@ export default function Register() {
               <h5 className='fw-bold '>Login Details</h5>
               <LoginInputs handleChanges={handleChanges} form={form} error={error} />
               <p className='text-muted'>Minimum 8 characters with at least one uppercase, one lowercase, one special character and a number</p>
-              <div className="form-group mb-4 d-flex">
-                <input type="checkbox" className="form-check-input me-1" />
-                <label className="form-check-label">By clicking 'Log In' you agree to our website KicksClub Terms & Conditions, Kicks Privacy Notice and Terms & Conditions.</label>
-              </div>
-              <div className="form-group mb-4">
-                <input type="checkbox" className="form-check-input me-1" name="keepLoggedIn" id="keepLoggedIn" />
-                <label htmlFor="keepLoggedIn">Keep me logged in - applies to all log in options below. More info</label>
-              </div>
+              <label className="form-group mb-4 custom-checkbox">
+                <input type="checkbox" />
+                <span className="checkbox-custom"></span>
+                <span className="checkmark fw-semibold">By clicking 'Log In' you agree to our website Kicks<span className='text-decoration-underline'>Club Terms & Conditions</span>,<span className='text-decoration-underline'> Kicks Privacy Notice</span>  and <span className='text-decoration-underline'>Terms & Conditions.</span></span>
+              </label>
+              <KeepMeLogged />  
               <AuthButton buttonName={"REGISTER"} loading={loading} />
+              <p className="mt-1">Already have an account? <Link to="/" className='text-black'>Login</Link></p>
             </form>
           </div>
         </div>

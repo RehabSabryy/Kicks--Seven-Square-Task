@@ -10,13 +10,11 @@
     --icon-color:#FFA52F;
     --more-btn-color :#D00000;
     --tag-color :#36323B;
+    --active-btn :#4A69E2;
 }
 body {
     color: var(--main-color);
-    font-family: 'Rubik', sans-serif;
-}
-input[type="checkbox"]:focus ,input[type="checkbox"]:active {
-    background-color: var(--main-color);
+    font-family: 'Open Sans', sans-serif;
 }
 .layout-color {
     background-color: var(--secondary-color);
@@ -27,11 +25,17 @@ input[type="checkbox"]:focus ,input[type="checkbox"]:active {
 .icon-color {
     color: var(--icon-color);
 }
+.icon-color-bg {
+    background-color: var(--icon-color);
+}
 .box-color {
     background-color: var(--secondary-color);
 }
 .tag-color {
     background-color: var(--tag-color);
+}
+.bg-active-color {
+    background-color: var(--active-btn);
 }
 .full-height {
     height: 100vh;
@@ -42,18 +46,33 @@ input[type="checkbox"]:focus ,input[type="checkbox"]:active {
 #loginForm input, #registerForm input, #addProductInputs input ,#addProductInputs textarea {
     border-color: var(--main-color);
 }
-#loginForm button, #registerForm button, #addProduct button, .btns button , .chart-btn button ,.chart button{
+#loginForm button, #registerForm button, #addProduct button, .btns button , .chart-btn button ,.chart button, .modal-footer .close-btn {
     background-color: var(--main-color);
     color: #fff;
 }
-.delete-color button {
+.btns button:hover {
+    border-color: var(--main-color);
+}
+.delete-color button, .modal-footer .delete-btn {
     background-color: var(--more-btn-color);
     color: #fff;
+}
+.delete-color button:hover, .modal-footer .delete-btn:hover {
+    border-color: var(--more-btn-color);
+    color: var(--more-btn-color);
 }
 #cancelProduct button {
     background-color: #fff;
     color: var(--main-color);
     border-color: var(--main-color);
+}
+.sidebar button:hover, .sidebar button:focus {
+    background-color: var(--active-btn);
+    color: #fff !important;
+}   
+.btn-group button:hover, .btn-group button:focus {
+    background-color: var(--active-btn);
+   border-color: var(--active-btn);
 }
 .sidebar-border {
     border-right: inset 1px #d3d3cf;
@@ -61,6 +80,60 @@ input[type="checkbox"]:focus ,input[type="checkbox"]:active {
 .table {
     --bs-table-bg: var(--secondary-color) !important;
 }
+/* for all cursor pointer  */
+.cursor-pointer {
+    cursor: pointer;
+}
+/* custom checkbox */
+/* Hide default checkbox */
+.custom-checkbox input[type="checkbox"] {
+    display: none;
+}
+/* Create a custom checkbox */
+.custom-checkbox .checkbox-custom {
+    position: relative;
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border: 1px solid var(--main-color);
+    border-radius: 2px;
+    margin-right: 10px;
+    vertical-align: middle;
+}
+
+/* Checkbox checked state */
+.custom-checkbox input[type="checkbox"]:checked + .checkbox-custom {
+    background-color: var(--main-color);
+}
+/* Add checkmark indicator when checked */
+.checkbox-custom::after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+.custom-checkbox input[type="checkbox"]:checked + .checkbox-custom::after {
+    display: block;
+    left: 8px;
+    top: 4px;
+    width: 5px;
+    height: 10px;
+    border: solid #fff;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+}
+
+/* offline feature  */
+.offline {
+    background-color: var(--main-color);
+    box-shadow: 10px 10px 10px  #ccc;
+    padding:  20px 30px;
+    color: white;
+    text-align: center;
+    position: fixed;
+    right: 50px;
+    bottom: 50px;
+    z-index: 99999;
+  }
 
 /* media queries for responsive */
 /* Extra small devices (phones) */
@@ -76,3 +149,4 @@ input[type="checkbox"]:focus ,input[type="checkbox"]:active {
 
     }
 } 
+

@@ -5,6 +5,8 @@ import AuthButton from '../AuthButton'
 import Joi from 'joi'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
+import KeepMeLogged from '../KeepMeLogged'
+
 export default function Login() {
     const [form, setForm] = useState({
         email: '',
@@ -27,13 +29,14 @@ export default function Login() {
         })
 
     })
+    //handle input changes
     const handleChanges = (e) => {
         const { name, value } = e.target
         setForm({ ...form, [name]: value })
     }
     const handleSubmit = async (e) => {
         e.preventDefault();
-        //validate for 
+        //validate form
         const { error } = schema.validate(form, { abortEarly: false });
         if (error) {
             const errors = {};
@@ -48,19 +51,16 @@ export default function Login() {
         
         try {
             const {data} = await axios.post('https://www.sevensquare.net/api/user/login', form);
-            console.log("logged in successfully",data);
             if(data.code === 200) {
                 localStorage.setItem('token', data.data.token);
                 localStorage.setItem('user', data.data.name);
                 navigate('/layout/dashboard');
             }
-        } catch (error) {
-            
+        } catch (error) {      
             setLoading(false);
             if (error.response && error.response.data) {
                 const errorMessage = error.response.data.message || 'Login failed. Please try again.';
                 setError({ general: errorMessage });
-                console.log("Response error data:", error.response.data); 
 
             } else {
                 setError({ general: 'Login failed. Please try again.' });
@@ -75,16 +75,14 @@ export default function Login() {
             </div>
             <div className="col-md-7 d-flex flex-column justify-content-center">
                 <div className="container px-5 w-75 m-auto auth-container">
-                    <h1>Login</h1>
-                    <Link className='text-black'>Forgot your password?</Link>
+                    <h1 className="fw-bold">Login</h1>
+                    <Link className='text-black fw-semibold'>Forgot your password?</Link>
                     <form id="loginForm" onSubmit={handleSubmit}>
                         <LoginInputs handleChanges={handleChanges} form={form} error={error} />
-                        <div className="form-group mb-4">
-                            <input type="checkbox" className="form-check-input me-1" />
-                            <label className="form-check-label">Keep me logged in - applies to all log in options below. More info</label>
-                        </div>
+                        <KeepMeLogged />
                         <AuthButton buttonName={"EMAIL LOGIN"} loading={loading}/>
                     </form>
+                    <p className="mt-3">Don't have an account? <Link to="/register" className='text-black'>Register</Link></p>
                 </div>
         </div>
         </div>

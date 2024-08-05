@@ -27,18 +27,18 @@ export default function ProductForm({handleChanges, newProduct, error}) {
     <>
         <div className='mb-3'>
             <label className='fw-bold mb-3' htmlFor="name">Product Name</label>
-            <input type="text" name="name" className="form-control" id="name" placeholder='Type name here' value={newProduct.name} onChange={handleChanges}/>
+            <input type="text" name="name" className="form-control" id="name" placeholder='Type name here' defaultValue={newProduct.product_name}  onChange={handleChanges}/>
             {error && error.name && <p className='text-danger mt-1'>{error.name}</p>}
         </div>  
         <div className='mb-3'>
             <label className='fw-bold mb-3' htmlFor="description">Description</label>
-            <textarea name="description" id="description" className="form-control" placeholder='Type Description here' rows={7} value={newProduct.description} onChange={handleChanges}></textarea>
+            <textarea name="description" id="description" className="form-control" placeholder='Type Description here' rows={7} defaultValue={newProduct.description} onChange={handleChanges}></textarea>
             {error && error.description && <p className='text-danger mt-1'>{error.description}</p>}
 
         </div> 
         <div className='mb-3'>
             <label className='fw-bold mb-3' htmlFor="category">Category</label>
-            <input type="text" name="category_name" className="form-control" id="category" placeholder='Type Category here' value={newProduct.category_name} onChange={handleChanges} />
+            <input type="text" name="category_name" className="form-control" id="category" placeholder='Type Category here' defaultValue={newProduct.product_categories} onChange={handleChanges} />
             {error && error.category_name && <p className='text-danger mt-1'>{error.category_name}</p>}
         </div> 
         <div className='mb-3'>
@@ -58,12 +58,12 @@ export default function ProductForm({handleChanges, newProduct, error}) {
         <div className="row mb-3">
             <div className='col-md-6'>
                 <label className='fw-bold mb-3' htmlFor="regular-price">Regular Price</label>
-                <input type="text" name="regular-price" className="form-control" id="regular-price" placeholder='$1000'/>
+                <input type="number" name="price" className="form-control" id="price" placeholder='$1000' defaultValue={newProduct.price} onChange={handleChanges}/>
                 {error && error.price && <p className='text-danger mt-1'>{error.price}</p>}
             </div>
             <div className='col-md-6'>
                 <label className='fw-bold mb-3' htmlFor="sale-price">Sale Price</label>
-                <input type="text" name="sale-price" className="form-control" id="sale-price" placeholder='$450' />
+                <input type="number" name="sale-price" className="form-control" id="sale-price" placeholder='$450' />
             </div>
         </div>
       <div className='mb-3'>

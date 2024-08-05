@@ -9,3 +9,12 @@
     height: 64px;
     border-radius: 8px;
 }
+.customer-img {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+}
+.circle {
+    width: 8px;
+    height: 8px;
+}
