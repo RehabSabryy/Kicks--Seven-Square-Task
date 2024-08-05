@@ -25,7 +25,6 @@ export default function UpdateProduct() {
           Authorization: `Bearer ${token}`,
         },
       });
-      console.log(data.data);
       setProduct(data.data);
 
     } catch (error) {
@@ -47,6 +46,11 @@ export default function UpdateProduct() {
 
   
   return (
+    <>
+    <div className='ps-4 pt-4'>
+        <h4 className='fw-bold'>Update Product </h4>
+        <p className='fw-semibold'>Home &gt; Products</p>
+      </div>
     <div className='p-4'>
      {product ? (
         <div className="container rounded-4 p-4 mb-5 bg-white">
@@ -95,6 +99,7 @@ export default function UpdateProduct() {
             </div>
         )
      }     
-    </div>      
+    </div>  
+    </>    
   )
 }

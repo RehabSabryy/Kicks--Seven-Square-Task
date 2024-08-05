@@ -47,9 +47,18 @@ export default function Navbar() {
               <button type="button" className="btn btn-outline-dark px-3 dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
               {userName}
               </button>
-              <ul className="dropdown-menu">
-                <li><p className="dropdown-item cursor-pointer" onClick={logout}>Logout</p></li>
-                <li><p className="dropdown-item cursor-pointer" >Another action</p></li>
+              <ul className="dropdown-menu p-4">
+                <li>
+                  <p className="dropdown-item fw-bold" >{userName}</p>
+                </li>
+                <li className='d-flex justify-content-between'>
+                  <p className="dropdown-item cursor-pointer" >Change password</p>
+                  <i className="fa-solid fa-angle-right ms-2"></i>
+                </li>
+                <li  className='d-flex justify-content-between'>
+                  <p className="dropdown-item cursor-pointer" onClick={logout}>Logout</p>
+                  <i className="fa-solid fa-right-from-bracket"></i>
+                </li>
               </ul>
             </div>
     </div>

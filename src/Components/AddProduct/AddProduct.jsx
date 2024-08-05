@@ -117,7 +117,7 @@ export default function AddProduct() {
             </div>
             {error && <p className="text-danger">{error.general}</p>}
             <div className="btns row mt-5 ps-4">
-              <div className="col-md-2 offset-md-8" id='addProduct'>
+              <div className="col-md-2 offset-md-8 space-div" id='addProduct'>
                 <Button btn='Add' loading={loading} />
               </div>
               <div className="col-md-2" id='cancelProduct'>

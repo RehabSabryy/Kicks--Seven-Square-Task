@@ -81,19 +81,19 @@ export default function Dashboard() {
           </div>
         </div>
         <div className='row'>
-          <div className="col-md-4 ps-0">
+          <div className="col-md-4 ps-0 space-div">
             <OrderBlock order={'Total Orders'} />
           </div>
-          <div className="col-md-4">
+          <div className="col-md-4 space-div">
             <OrderBlock order={'Active Orders'} />
           </div>
-          <div className="col-md-4">
+          <div className="col-md-4 space-div">
             <OrderBlock order={'Shipped Orders'} />
           </div>
         </div>
         <div className="row mt-4">
           <div className='col-md-8 p-3'>
-            <div className="layout-color p-3 rounded-4">
+            <div className="layout-color p-3 rounded-4 dashboard-section">
               <div className='d-flex justify-content-between mb-2'>
                 <h6 className='fw-bold'>Sale Graph</h6>
                 <div className='d-flex'>
@@ -109,13 +109,16 @@ export default function Dashboard() {
                 </div>
               </div>
               <hr />
-           
-              <Line data={data} options={options} />
-
+              
+              {/* visualized data */}
+              <div className='content'>
+                 <Line data={data} options={options} className='sales-graph'/>
+              </div>
             </div>
           </div>
+
           <div className='col-md-4 p-3'>
-            <div className="layout-color p-3 rounded-4">
+            <div className="layout-color p-3 rounded-4 dashboard-section">
               <div className='d-flex justify-content-between align-items-center mb-2'>
                 <h6 className='fw-bold'>Best Sellers</h6>
                 <img src="/Images/vertical-dots.png" alt="dots" />

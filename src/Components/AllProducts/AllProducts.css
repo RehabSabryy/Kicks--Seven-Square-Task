@@ -1,0 +1,22 @@
+.productImg {
+    width: 85px;
+    height: 85px;
+}
+
+   .pagination .page-item {
+    border: 1px solid #ddd;
+   }  
+  
+  .pagination .page-link {
+    background-color: transparent; 
+    color: #000; 
+    border: 1px solid #000; 
+    margin: 0 15px;
+    border-radius: 4px;
+    padding: 5px 15px;
+  }
+    .pagination .page-item.active .page-link {
+    background-color: #000; 
+    color: #fff; 
+    border: 1px solid #000; 
+  }

@@ -70,9 +70,9 @@ body {
     background-color: var(--active-btn);
     color: #fff !important;
 }   
-.btn-group button:hover, .btn-group button:focus {
-    background-color: var(--active-btn);
-   border-color: var(--active-btn);
+.btn-group button:hover, .btn-group button:focus, .btn-group button:active {
+    background-color: var(--main-color);
+   border-color: var(--main-color);
 }
 .sidebar-border {
     border-right: inset 1px #d3d3cf;
@@ -100,7 +100,10 @@ body {
     margin-right: 10px;
     vertical-align: middle;
 }
-
+.dropdown-item:hover {
+    background-color: transparent !important;
+    color: var(--main-color) !important;
+}
 /* Checkbox checked state */
 .custom-checkbox input[type="checkbox"]:checked + .checkbox-custom {
     background-color: var(--main-color);
@@ -146,7 +149,13 @@ body {
         flex-direction: column;
         min-height: 100vh;
         justify-content: center;
-
+    }
+    .space-div{
+        margin-bottom: 10px;
+    }
+    .table {
+        font-size: 14px;
+        display: flex;
+        flex-direction: column;
     }
 } 
-

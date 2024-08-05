@@ -9,3 +9,11 @@
     overflow: hidden;
     transition: max-height 0.3s ease-in;
 }
+
+.categoryNumbers {
+    color:#000
+}
+.categoryNumbers:hover {
+    background-color: #4A69E2;
+    color: #fff;
+}
