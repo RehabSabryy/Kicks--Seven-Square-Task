@@ -1,0 +1,11 @@
+.recharts-legend-wrapper {
+    display: none;
+}
+.recharts-cartesian-axis-ticks {
+    font-weight: bold;
+}
+.best-seller-imgs {
+    width: 64px;
+    height: 64px;
+    border-radius: 8px;
+}
