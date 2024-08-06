@@ -14,7 +14,7 @@ import NotFound from './Components/NotFound/NotFound';
 import { Offline } from 'react-detect-offline';
 
 
-const routers = createHashRouter([
+const routers = createBrowserRouter([
   {index: true, element:<LayoutRoutes><Login /></LayoutRoutes>},
   {path: '/register', element: <Register />},
     {path:'/layout' , element:<ProtectedRoute><Layout /> </ProtectedRoute> , children:[
